@@ -53,18 +53,18 @@ const RecordsList = () => {
 	const retrieveRecords = async () => {
 		let response = await RecordDataService.getAll();
 		setRecords(response.data);
-		response = await RecordDataService.summary(12345); // TODO: user id
+		response = await RecordDataService.summary();
 		let data = response.data;
 		setNetWorth(data.net_worth);
 		setTotalAsset(data.total_asset);
 		setTotalLiability(data.total_liability);
 	};
 
-	const {path, url} = useRouteMatch();
+	const {path} = useRouteMatch();
 	const history = useHistory();
 
 	const handleAddRecordClick = () => {
-		history.push(`${url}/add`);
+		history.push("/add");
 	};
 
 	const handleDeleteRecordClick = async (recordId) => {
@@ -91,7 +91,7 @@ const RecordsList = () => {
 										<TableCell>Name</TableCell>
 										<TableCell align="right">Type</TableCell>
 										<TableCell align="right">Balance</TableCell>
-										<TableCell align="center">Delete</TableCell>
+										<TableCell align="center"></TableCell>
 									</TableRow>
 								</TableHead>
 								<TableBody>
@@ -110,7 +110,7 @@ const RecordsList = () => {
 						</TableContainer>
 					</div>
 				</Route>
-				<Route path={`${path}/add`}>
+				<Route path={"/add"}>
 					<AddRecord retrieveRecords={retrieveRecords} />
 				</Route>
 			</Switch>

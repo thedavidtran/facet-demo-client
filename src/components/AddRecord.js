@@ -51,7 +51,7 @@ const AddRecord = ({retrieveRecords}) => {
 	};
 
 	const navigateToRecords = () => {
-		history.push("/records");
+		history.push("/");
 	}
 
 	const useStyles = makeStyles((theme) => ({
@@ -133,18 +133,6 @@ const AddRecord = ({retrieveRecords}) => {
 			</div>
 		</Container>
 	);
-
-
-	/*<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.submit}
-					>
-						Sign Up
-					</Button>*/
-
 };
 
 export default AddRecord;
