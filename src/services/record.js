@@ -24,7 +24,7 @@ const summary = (id) => {
 	return http.get(`/records/summary/${id}`)
 }
 
-export default {
+const Record = {
 	getAll,
 	get,
 	create,
@@ -32,3 +32,5 @@ export default {
 	remove,
 	summary
 };
+
+export default Record;
