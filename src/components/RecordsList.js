@@ -33,8 +33,12 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-function currencyFormat(num) {
-	return (num >= 0) ? `$${num}` :`-$${Math.abs(num)}`;
+function currencyFormat(num=0) {
+	return (num >= 0) ? `$${num.toFixed(2)}` :`-$${Math.abs(num).toFixed(2)}`;
+}
+
+function getTypeLabel(type) {
+	return (type === "asset") ? "Asset" : "Liability";
 }
 
 const RecordsList = () => {
@@ -92,7 +96,7 @@ const RecordsList = () => {
 										<TableCell>Name</TableCell>
 										<TableCell align="right">Type</TableCell>
 										<TableCell align="right">Balance</TableCell>
-										<TableCell align="center"></TableCell>
+										<TableCell align="right">Delete</TableCell>
 									</TableRow>
 								</TableHead>
 								<TableBody>
@@ -101,7 +105,7 @@ const RecordsList = () => {
 											<TableCell component="th" scope="row">
 												{row.name}
 											</TableCell>
-											<TableCell align="right">{row.type}</TableCell>
+											<TableCell align="right">{getTypeLabel(row.type)}</TableCell>
 											<TableCell align="right">{currencyFormat(row.balance)}</TableCell>
 											<TableCell className={classes.deleteButton} algin="right"><Button onClick={() => handleDeleteRecordClick(row.id)} color="secondary">x</Button></TableCell>
 										</TableRow>
