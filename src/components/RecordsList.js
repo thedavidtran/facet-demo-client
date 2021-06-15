@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router-dom";
 import RecordDataService from "../services/record";
+import SummaryDataService from "../services/summary";
 import {makeStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -53,7 +54,7 @@ const RecordsList = () => {
 	const retrieveRecords = async () => {
 		let response = await RecordDataService.getAll();
 		setRecords(response.data);
-		response = await RecordDataService.summary();
+		response = await SummaryDataService.summary();
 		let data = response.data;
 		setNetWorth(data.net_worth);
 		setTotalAsset(data.total_asset);

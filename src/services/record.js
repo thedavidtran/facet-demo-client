@@ -20,17 +20,12 @@ const remove = (id) => {
 	return http.delete(`/records/${id}`);
 };
 
-const summary = (id) => {
-	return http.get(`/records/summary/${id}`)
-}
-
 const Record = {
 	getAll,
 	get,
 	create,
 	update,
-	remove,
-	summary
+	remove
 };
 
 export default Record;
